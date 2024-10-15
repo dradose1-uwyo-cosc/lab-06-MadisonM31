@@ -1,12 +1,9 @@
-# Your Name Here
+# Madison Manning
 # UWYO COSC 1010
-# Submission Date
+# 10/15/2024
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Lab Section: 10
+# Sources, people worked with, help given to: Special thanks to my COSC 1010 lecture notes, Austin Barner, and Paige Emerson
 
 
 random_string = """
@@ -71,6 +68,16 @@ print(len(random_string)) # Print out the size for reference
 # Output which letter occurred the least 
 # Output what the percentage of the string each character is, again in alphabetical
 
+alphabet = {}
+
+for letter in random_string:
+    if letter not in alphabet.keys():
+        alphabet[letter] = 1
+    else:
+        alphabet[letter] += 1
+
+print(sorted(alphabet.items()))
+
 #Tips and trick:
 # You can iterate through strings like you would a list
 # All characters are lowercase 
@@ -88,13 +95,30 @@ print(len(random_string)) # Print out the size for reference
 print("*"*75)
 # Output which letter occurred the most 
 
-most_occurred = ""
-least_occurred = ""
+most_occurred = "a"
+least_occurred = "a"
+
+
+for letter in alphabet.keys():
+    if alphabet[letter] > alphabet[most_occurred]:
+        most_occurred = letter
+    if alphabet[letter] < alphabet[least_occurred]:
+        least_occurred = letter
+
 
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
 # Output which letter occurred the least 
-print(f"The letter that occurred the most is {least_occurred}")
+print(f"The letter that occurred the least is {least_occurred}")
 print("*"*75)
 
 # Output what the percentage of the string each character is, again in alphabetical
+
+percentages = {}
+
+
+for letter, number in alphabet.items():
+    percentages[letter] = number / len(random_string) *100
+
+print(sorted(percentages.items()))
+
